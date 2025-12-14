@@ -7,16 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
   update-env:
     runs-on: ubuntu-latest
     steps: 
       - name: Install Package
         run: | 
           sudo apt-get update
-          sudo apt-get install docker
-          docker --version
+          sudo apt-get install docker.io
+          
 
   process:
+    needs: [checkout,update-env]
     runs-on: ubuntu-latest
     steps:
       - name: run a one-line script
@@ -25,3 +27,4 @@ jobs:
         run: |
           echo add other actions to build,
           echo test, and deploy your project
+          docker --version
