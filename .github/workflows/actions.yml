@@ -7,6 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+  update-env:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Install Package
+        run: | 
+          sudo apt-get update
+          sudo apt-get install docker
+          docker --version
 
   process:
     runs-on: ubuntu-latest
