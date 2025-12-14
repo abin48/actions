@@ -1,4 +1,6 @@
-name: CI
+name: ACTIONS101
+run-name: Pipeline run by @${{ github.actor }}
+
 on:
   push:
     branches: ["main"]
