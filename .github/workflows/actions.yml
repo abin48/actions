@@ -30,15 +30,13 @@ jobs:
   self-host:
     runs-on: self-hosted
     steps:
-        - name: check
-          shell: cmd
-          run: |
-            whoami
-            hostname
-        - name: runner details
-          shell: cmd
-          run: |
-            echo "Running on self-hosted runner"
-            echo "Runner name: $RUNNER_NAME"
-            echo "OS: $RUNNER_OS"
-            echo "Architecture: $RUNNER_ARCH"
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Check user (CMD)
+        shell: cmd
+        run: whoami
+
+      - name: Show file tree (CMD)
+        shell: cmd
+        run: tree /F
