@@ -15,7 +15,6 @@ jobs:
         run: | 
           sudo apt-get update
           sudo apt-get install nginx
-          
 
   process:
     needs: [checkout,update-env]
@@ -27,3 +26,17 @@ jobs:
         run: |
           echo add other actions to build,
           echo test, and deploy your project
+
+  self-host:
+    runs-on: self-hosted
+    steps:
+        - name: check
+          run: |
+            whoami
+            hostname
+        - name: runner details
+          run: |
+            echo "Running on self-hosted runner"
+            echo "Runner name: $RUNNER_NAME"
+            echo "OS: $RUNNER_OS"
+            echo "Architecture: $RUNNER_ARCH"
