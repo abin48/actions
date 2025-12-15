@@ -20,8 +20,8 @@ jobs:
       - name: setup gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: build with gradle
-        run: gradle build
+      - name: Build with Gradle
+        run: ./gradlew build
 
       # - name: upload artifact
       #   uses: actions/upload-artifact@v4
