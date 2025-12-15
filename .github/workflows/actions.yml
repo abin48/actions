@@ -9,10 +9,10 @@ env:
   PIPE: cicd
 
 jobs:
-  report-url-sh:
+  report-url-ps:
     runs-on: self-hosted
     steps:
-      - name: Show GitHub context (Bash)
-        shell: bash
+      - name: Show GitHub context (PowerShell)
+        shell: powershell
         run: |
-          echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
