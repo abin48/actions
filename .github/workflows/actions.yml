@@ -1,24 +1,30 @@
-name: ACTIONS101
+name: deployment example for java
 run-name: Pipeline run by @${{ github.actor }}
 
 on:
   push:
-    branches: ["main"]
-  
-env:
-  PIPE: cicd
+    branches: ["main","dev"]
 
 jobs:
-  report-url-windows:
-    runs-on: self-hosted
+  build-and-test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Show GitHub context (PowerShell)
-        shell: powershell
-        run: |
-          echo "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+      - uses: actions/checkout@v3
+    
+      - name: set up jdk 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
 
-  workflow-info:
-    runs-on: self-hosted
-    steps:
-      - name: report
-        run: echo "Running $GITHUB_WORKFLOW"
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: build with gradle
+        run: ./gradlew build
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: archieve.zip
+          path: build/libs
