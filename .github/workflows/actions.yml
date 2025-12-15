@@ -12,9 +12,11 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: Show GitHub Workspace
+      - name: Show workspace
         run: |
-          echo "GitHub workspace is: $GITHUB_WORKSPACE"
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "github.workspace context: ${{ github.workspace }}"
+          ls -la $GITHUB_WORKSPACE  # List files to confirm
 
 
   #     - name: Setup Java
