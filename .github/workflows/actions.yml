@@ -22,8 +22,9 @@ jobs:
         run: | 
           echo $STAGE
           echo $stage
-          echo runner.os
-          echo runner.name
+          echo ${{runner.name}}
+          echo ${{runner.os}}
+
 
   prod_check:
     if: ${{github.ref == 'refs/heads/main'}}
