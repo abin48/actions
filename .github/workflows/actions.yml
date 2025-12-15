@@ -28,6 +28,10 @@ jobs:
       - name: Build with Gradle
         run: gradle build
 
+      - name: List current directory (check files)
+        run: |
+          ls -la
+
       # - name: upload artifact
       #   uses: actions/upload-artifact@v4
       #   with:
