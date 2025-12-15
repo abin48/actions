@@ -69,3 +69,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  run-jar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      - name: download release asset
+        run: |
+          curl -L -o archieve.jar \
+            https://github.com/abin48/actions/releases/download/v0.0.1-dev/archieve.jar
+
+      - name: Run JAR
+        run: |
+          java -jar archieve.jar
