@@ -55,7 +55,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: archieve
-          path: ./archieve
+          path: archieve
 
       - name: prep release
         uses: softprops/action-gh-release@v2
