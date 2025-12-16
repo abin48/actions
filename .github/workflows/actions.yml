@@ -1,14 +1,15 @@
-name: input and output in workflows
+name: simple input simple
 
 on:
-  push:
-    branches: [ main ]
-
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "message to print"
+        required: True
 
 jobs:
-  first:
-    runs-on: ubuntu-latest
-
+  demo:
+    runs-on: self-hosted
     steps:
-      - name: input
-      
+      - name: print input
+        run: echo "${{ inputs.message }}"
