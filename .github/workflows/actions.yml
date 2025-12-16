@@ -20,7 +20,7 @@ on:
 jobs:
   demo:
     runs-on: ubuntu-latest
-    if: ${{ inputs.message }}
+    environment: ${{ inputs.env }}
     steps:
       - name: print input
         run: echo "${{ inputs.message }}"
@@ -30,4 +30,6 @@ jobs:
           echo "${{inputs.age}}"
           echo "${{inputs.version}}"
           echo "${{inputs.env}}"
+          echo "${{vars.DEV_VERSION}}"
+
 
