@@ -16,11 +16,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      
+      - name: get node version
+        id: node
+        run: |
+          echo "version=${node -v}" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v4
         with:
           path: ~/.npm # →  /home/runner/.npm  on GitHub Actions
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json')}}
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json')}}-${{steps.node.outputs.version}}
           restore-keys: |
             ${{ runner.os }}-npm-
       
@@ -29,4 +34,3 @@ jobs:
 
 
 
-        
