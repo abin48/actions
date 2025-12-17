@@ -10,18 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: pwd
-      - run: mkdir -p artifact
+      - uses: actions/checkout@v4
 
-      - run: echo hello > artifact/world.txt
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v6.0.0
+      - name: setup node.js
+        uses: actions/setup-node@v4
         with:
-          name: artifactfile
-          path: artifact/world.txt
-          if-no-files-found: error
-          retention-days: 1
+          node-version: 20
 
-
-
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm # →  /home/runner/.npm  on GitHub Actions
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json')}}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      
+      - name: Install dependencies
+        run: npm install
