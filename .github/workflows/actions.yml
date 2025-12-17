@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: mkdir -p /artifact
+      - run: sudo mkdir -p /artifact
 
       - run: echo hello > /artifact/world.txt
 
@@ -20,4 +20,3 @@ jobs:
           name: artifactfile
           path: /artifact/world.txt
 
-          
