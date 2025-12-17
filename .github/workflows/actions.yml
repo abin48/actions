@@ -8,15 +8,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
 
     steps:
-      - run: sudo mkdir -p /artifact
+      - run: pwd
+      - run: mkdir -p artifact
 
-      - run: echo hello > /artifact/world.txt
+      - run: echo hello > artifact/world.txt
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v6.0.0
         with:
           name: artifactfile
-          path: /artifact/world.txt
+          path: artifact/world.txt
 
