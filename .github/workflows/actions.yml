@@ -20,4 +20,8 @@ jobs:
         with:
           name: artifactfile
           path: artifact/world.txt
+          if-no-files-found: error
+          retention-days: 1
+
+
 
