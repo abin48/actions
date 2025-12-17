@@ -29,3 +29,5 @@ jobs:
         with: 
           node-version: ${{needs.build.outputs.build-version}}
 
+      - name: check
+        run: echo node -v
