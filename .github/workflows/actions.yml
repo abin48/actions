@@ -25,9 +25,11 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.npm # →  /home/runner/.npm  on GitHub Actions
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json')}}-${{steps.node.outputs.version}}
+          key: ${{ runner.os }}-npm-${{steps.node.outputs.version}}-${{ hashFiles('package-lock.json')}}
           restore-keys: |
+            ${{ runner.os }}-npm-${{steps.node.outputs.version}}
             ${{ runner.os }}-npm-
+            ${{ runner.os }}
       
       - name: Install dependencies
         run: npm install
