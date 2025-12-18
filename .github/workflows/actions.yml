@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: check-os
         if: runner.os != 'Windows'
-        run: echo 'the runner's os sys is ${{runner.os}}.'
+        run: echo "The runner's operating system is ${{runner.os}}."
 
 
