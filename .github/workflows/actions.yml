@@ -9,8 +9,12 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - name: check-os
-        if: runner.os != 'Windows'
-        run: echo "The runner's operating system is ${{runner.os}}."
+      - name: run tests
+        run: |
+          echo "running tests"
+          exit 1
 
-
+      - name: upload logs on failure
+        if: always() && failure()
+        run: |
+          echo "tests failed! upload logs"
