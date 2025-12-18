@@ -20,3 +20,8 @@ jobs:
       - run: echo "hello world from xaviera40404"
 
       - run: echo ${{ secrets.WORKFLOW_PAT }}
+
+      - env:
+          DATA_VALUE: ${{ secrets.WORKFLOW_PAT }}
+        run: echo "$DATA_VALUE"
+        
