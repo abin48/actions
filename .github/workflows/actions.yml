@@ -1,19 +1,14 @@
-name: simple input simple
+name: workflow101
 
-on:      
-  issues:
-    types: [opened,labeled,closed]
-  
+on:
+  push:
+    branches: 
+      - main
 
 jobs:
-  run_if_bug:
-    if: github.event.label.name == 'bug'
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "bug label added!"
-  
-  issue-close:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo " ${{github.event.issue.comments}} ${{github.event.issue.closed_at}}"
+      - run: echo "building..."
 
+      
