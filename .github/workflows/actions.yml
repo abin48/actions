@@ -1,20 +1,13 @@
-name: workflow101
+name: CI Pipeline
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
-  report:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: run tests
-        run: |
-          echo "running tests"
-          exit 1
-
-      - name: upload logs on failure
-        if: always() && failure()
-        run: |
-          echo "tests failed! upload logs"
+      - name: Checkout code
+        run: echo "hello world"
