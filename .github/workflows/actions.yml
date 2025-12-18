@@ -11,3 +11,9 @@ jobs:
     steps:
       - name: code
         run: echo "hello world"
+
+      - name: secrets
+        env: 
+          secret: ${{ secrets.sec }}
+        run: echo "Secret is $SECRET"
+
