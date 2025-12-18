@@ -8,7 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
+      - name: wait 5 seconds
+        run: sleep 5
+        
       - run: echo "building..."
 
-      
