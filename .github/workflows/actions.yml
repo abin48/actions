@@ -8,26 +8,22 @@ on:
 jobs:
   nginx-test:
     runs-on: ubuntu-latest
-
-    services:
-      nginx:
-        image: nginx:alpine
-        ports:
-          - 8080:80
-        volumes:
-          - ${{ github.workspace }}/src:/usr/share/nginx/html:ro
+    container: nginx:alpine
 
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: wait for nginx
+
+      - name: Copy site files
         run: |
-          sleep 3
-          echo ${{ github.workspace }}
-          ls -la
-      
-      - name: verify index.html is served
+          cp -r src/* /usr/share/nginx/html/
+          ls -la /usr/share/nginx/html/
+
+      - name: Start NGINX
+        run: nginx
+
+      - name: Verify site
         run: |
-          curl -f http://localhost:8080
+          apk add --no-cache curl
+          curl -f http://localhost
 
