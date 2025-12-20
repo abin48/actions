@@ -25,6 +25,7 @@ jobs:
         run: |
           sleep 3
           echo ${{ github.workspace }}
+          echo ls -la
       
       - name: verify index.html is served
         run: |
